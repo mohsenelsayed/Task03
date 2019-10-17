@@ -38,7 +38,7 @@ createConnection({
   app.get('/members/member/:ID',async (req,res)=>{
     members = await connection.getRepository(Member);
     if(members.findOne(req.params.ID)){
-      let targetMember = await member.findOne(req.params.ID);
+      let targetMember = await members.findOne(req.params.ID);
       res.status(200).send(targetMember);
     }else{
       res.status(400).send("Wrong member ID!");
